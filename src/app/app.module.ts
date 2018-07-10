@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule} from '@angular/forms'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
@@ -8,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './guards/auth.guard';
+import {AuthService} from './auth/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,10 +19,13 @@ import { AuthGuard } from './guards/auth.guard';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     routing
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
