@@ -9,11 +9,11 @@ import { first } from 'rxjs/operators';
 
 export class LoginComponent implements OnInit {
   model: any = {};
-  loading:boolean = false;
+  loading: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService:AuthService
+    private authService: AuthService
   ) { }
 
   ngOnInit() { }
@@ -21,7 +21,14 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.login(this.model.username, this.model.password)
       .subscribe(
-        data => {
+        (data: any) => {
+          this.loading = false;
+          const user = data.data;
+          if (user && user.token) {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.router.navigateByUrl('/');
+          }
         },
         error => {
           this.loading = false;
