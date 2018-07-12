@@ -12,4 +12,7 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post('https://ninja-boilerplate.herokuapp.com/v1/api/user/login', { email: email, password: password })
   }
+  register(email: string, password: string) {
+    return this.http.post('https://ninja-boilerplate.herokuapp.com/v1/api/user/signup', { email: email, password: password })
+  }
 }

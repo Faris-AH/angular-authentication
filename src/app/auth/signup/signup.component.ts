@@ -1,12 +1,37 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'signup-component',
   templateUrl: './signup.component.html'
 })
 
 export class SignupComponent implements OnInit {
-  constructor() { }
+  model: any = {};
+  loading: boolean = false;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() { }
+  login() {
+    this.loading = true;
+    this.authService.register(this.model.username, this.model.password)
+      .subscribe(
+        (data: any) => {
+          this.loading = false;
+          const user = data.data;
+          if (user && user.token) {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.router.navigateByUrl('/');
+          }
+        },
+        error => {
+          this.loading = false;
+        });
+  }
 }
