@@ -10,6 +10,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './guards/auth.guard';
 import {AuthService} from './auth/auth.service';
+import { UserModule } from './user/user.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import {AuthService} from './auth/auth.service';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    routing
+    routing,
+    UserModule
   ],
   providers: [
     AuthGuard,
