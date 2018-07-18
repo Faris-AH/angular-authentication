@@ -11,6 +11,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './guards/auth.guard';
 import {AuthService} from './auth/auth.service';
 import { UserModule } from './user/user.module';
+import {TokenInterceptor} from './auth/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,12 @@ import { UserModule } from './user/user.module';
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -15,4 +15,11 @@ export class AuthService {
   register(email: string, password: string) {
     return this.http.post('https://ninja-boilerplate.herokuapp.com/v1/api/user/signup', { email: email, password: password })
   }
+  getToken():string{
+    const user = JSON.parse( localStorage.getItem('currentUser') );
+    if(!user){
+      return null;
+    } 
+    return user['token'];
+  }
 }
