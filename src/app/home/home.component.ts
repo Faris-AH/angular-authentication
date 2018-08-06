@@ -2,6 +2,7 @@ import { UserService } from './../user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '../../../node_modules/@angular/router';
 
+
 @Component({
   selector: 'home-component',
   templateUrl: 'home.component.html'
@@ -9,6 +10,7 @@ import { Router } from '../../../node_modules/@angular/router';
 
 export class HomeComponent implements OnInit {
   user: any;
+  opened: boolean;
   constructor(
     private router: Router,
     private userService: UserService

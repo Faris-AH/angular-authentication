@@ -14,6 +14,8 @@ import {AuthService} from './auth/auth.service';
 import { UserModule } from './user/user.module';
 import {TokenInterceptor} from './auth/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import {MatSidenavModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     HttpClientModule,
     routing,
-    UserModule
+    UserModule,
+    MatSidenavModule
   ],
   providers: [
     AuthGuard,
