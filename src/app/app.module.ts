@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -12,6 +13,7 @@ import { AuthGuard } from './guards/auth.guard';
 import {AuthService} from './auth/auth.service';
 import { UserModule } from './user/user.module';
 import {TokenInterceptor} from './auth/token.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,8 @@ import {TokenInterceptor} from './auth/token.interceptor';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
     FormsModule,
     HttpClientModule,
     routing,

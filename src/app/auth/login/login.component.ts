@@ -2,6 +2,9 @@ import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+
+
 @Component({
   selector: 'login-component',
   templateUrl: './login.component.html'
@@ -13,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr :  ToastrService
   ) { }
 
   ngOnInit() { }
@@ -28,10 +32,12 @@ export class LoginComponent implements OnInit {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.router.navigateByUrl('/');
+            this.toastr.success(data.message);
           }
         },
-        error => {
+        (error) => {
           this.loading = false;
+          this.toastr.error(error.error && error.error.message);
         });
   }
 }

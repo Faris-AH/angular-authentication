@@ -28,3 +28,4 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('currentUser');
     this.router.navigateByUrl('/login');
   }
+}
