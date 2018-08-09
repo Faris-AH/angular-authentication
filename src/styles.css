@@ -1,2 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body { 
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+/* Layout */
+.logout{
+  position: absolute;
+  right: 60px;
+}
+.loggin-user{
+  position: absolute;
+  right: 20px;
+}
+
+
+
+
+/* utilities classes */
+.m-lr-20{
+  margin : 0 20px;
+}

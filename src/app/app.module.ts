@@ -1,26 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { routing } from './app.routing';
 
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { AuthGuard } from './guards/auth.guard';
-import {AuthService} from './auth/auth.service';
-import { UserModule } from './user/user.module';
-import {TokenInterceptor} from './auth/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import {MatSidenavModule} from '@angular/material';
+import { MatSidenavModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material';
+import { MainLayoutComponent } from './layout/main/main-layout.component';
+import { AuthLayoutComponent } from './layout/auth/auth-layout.component';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing';
+import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './auth/auth.service';
+import { UserModule } from './user/user.module';
+import { TokenInterceptor } from './auth/token.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    SignupComponent,
+    AuthLayoutComponent,
+    MainLayoutComponent,
     HomeComponent
   ],
   imports: [
@@ -29,9 +32,11 @@ import {MatSidenavModule} from '@angular/material';
     ToastrModule.forRoot(), // ToastrModule added
     FormsModule,
     HttpClientModule,
-    routing,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
     UserModule,
-    MatSidenavModule
+    AppRoutingModule,
   ],
   providers: [
     AuthGuard,
