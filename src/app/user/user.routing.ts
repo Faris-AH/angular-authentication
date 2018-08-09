@@ -6,12 +6,10 @@ import { UserComponent } from './user.component';
 import { UserListingComponent } from './user-listing/user-listing.component';
 const routes: Routes = [
   {
-    path: '',
-    component: UserComponent,
+    path: 'listing',
+    component: UserListingComponent,
     children: [
-      {
-        path: 'listing', component: UserListingComponent
-      }
+     
     ]
   }
 ];
@@ -21,5 +19,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class UserRoutingModule { }
-
-export const routedComponents = [UserComponent];

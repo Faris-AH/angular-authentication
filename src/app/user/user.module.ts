@@ -8,7 +8,9 @@ import { UserRoutingModule } from './user.routing';
   imports: [
     UserRoutingModule
   ],
-  exports: [],
+  exports: [
+    UserRoutingModule
+  ],
   declarations: [
     UserComponent,
     UserListingComponent

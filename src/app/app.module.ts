@@ -35,8 +35,8 @@ import { TokenInterceptor } from './auth/token.interceptor';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    UserModule,
     AppRoutingModule,
+    UserModule,
   ],
   providers: [
     AuthGuard,

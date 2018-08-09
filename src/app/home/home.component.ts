@@ -28,6 +28,6 @@ export class HomeComponent implements OnInit {
   }
   logout(){
     localStorage.removeItem('currentUser');
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/session/login');
   }
 }
